@@ -14,9 +14,10 @@ class SongsController < ApplicationController
   def show
     if Song.exists?(id: params[:id])
       @song = Song.find(params[:id])
-    else
+    elsif Artist.exists?(id: params[:artist_id])
+      artist = Artist.find(params[:artist_id])
       flash[:alert] = "Song not found"
-      redirect_to(artist_songs_path(@artist))
+      redirect_to(artist_songs_path(artist))
     end
   end
 
