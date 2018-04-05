@@ -1,7 +1,6 @@
 class SongsController < ApplicationController
   def index
     if params[:artist_id]
-      binding.pry
       if Artist.where(id: params[:artist_id])
         @songs = Artist.find(params[:artist_id]).songs
       else
